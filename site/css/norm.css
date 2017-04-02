@@ -1,0 +1,204 @@
+
+p,div {
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 13px;
+    color: #434343;
+    line-height: 25px;
+}
+
+.t2 { font-size: 150%; }
+
+/*float*/
+.fl { float: left; }
+.fr { float: right; }
+.fn { float: none; }
+
+
+
+/* written by bahador ***************************************************************************/
+
+
+body { font: 12px Arial;}
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 170px;
+  height: 18px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+.linechartPath{
+	stroke:steelblue;
+	 stroke-width: 2;
+    fill: none;
+}
+
+.movementPath{
+
+     stroke-width: 1.5;
+     stroke:#990000;;
+     fill:none;
+}
+
+.movementPath:hover{
+ 
+    stroke-width: 2.5;
+}
+
+.selected {
+  stroke-width: 3;
+  opacity: 1;
+}
+
+.line{
+    stroke-width:1;
+}
+.line:hover{
+
+     stroke-width:3;
+}
+
+.state{
+    stroke-width:0.5;
+}
+.state:hover{
+
+     stroke-width:2;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 6px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+/*********************************************************************************************/
+
+
+
+/*general alignment*/
+.ct { text-align: center; }  /* for text only*/
+.ctr {
+  margin-left: auto;
+  margin-right: auto;
+} /* center horizontal eleement */
+
+/*background colors*/
+.greybk { background-color: #C9C9C9; }
+
+ /*div scroll*/
+.scroll { overflow: scroll; }
+
+/*width and height*/
+.w100 { width: 100%; }
+.h100 { height: 100%; }
+
+/* borders */
+.g0bb { border-bottom: solid 1px #c9c9c9; }
+
+/*paddings*/
+.pdt15 { padding-top: 15px; }
+
+.pdl15 { padding-left: 15px; }
+
+.pdb15 { padding-bottom: 15px; }
+
+/*margains*/
+.mgl15 { margin-left: 15px; }
+
+/*id specific scope*/
+#grid td {
+  vertical-align: top;
+}
+
+#filter {
+  width: 270px;
+  /*height: 720px;*/
+}
+
+#keyword {
+  width: 240px;
+}
+.main-page {
+}
+#vis {
+   float:left;
+   border: 1px solid gray;
+   margin: 10px;
+   margin-left: 20px;
+}
+.right-side {
+   float:left;
+   margin-top: 100px;
+}
+.right-box {
+  height: 500px;
+  margin: 20px;
+  padding: 10px;
+}
+#chart {
+  border: 1px solid gray;
+}
+.details-box {
+  height: 325px !important;
+  padding: 20px;
+  border: 1px solid gray;
+  font-size: 20px;
+}
+.name-details {
+  font-size: 28px !important;
+  padding: 40px 0px 10px 60px;
+}
+.mv-details {
+  padding-bottom: 40px;
+  font-size: 24px;
+}
+.nationality-details, .number-details, .dob-details, .position-details, .club-details, .rank-details {
+  line-height: 32px;
+}
+.player-image {
+  float: left;
+  padding-right: 10px;
+}
+.title {
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  padding-top: 13px;
+}

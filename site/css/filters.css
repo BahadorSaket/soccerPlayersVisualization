@@ -1,0 +1,70 @@
+
+.filter-panel {
+	padding: 10px;
+}
+.filter-panel input.name-search {
+	font-size: 14px;
+	border-radius: 50px; 
+	-moz-border-radius: 50px; 
+	-webkit-border-radius: 50px; 
+	border: 1px solid black;
+	padding: 3px 8px;
+	width: 90%;
+	margin-bottom: 15px;
+}
+.filter-panel .filter-toggle {
+	padding: 0px 10px;
+	font-size: 14px;
+	cursor: pointer;
+}
+.filter-panel .filter-label {
+	margin-top: 5px;
+}
+.filter-panel .filter-val-div {
+	font-size: 12px;
+	line-height: 16px;
+}
+.filter-panel input[type="checkbox"] {
+	font-size: 18px;
+	margin-top: 0px;
+}
+.filter-panel .button-box {
+	padding-top: 10px;
+	padding-left: 27%;
+}
+.filter-panel button {
+	padding: 8px;
+	color: white;
+	background-color: green;
+	border: none;
+	cursor: pointer;
+}
+.ui-autocomplete {
+	font-size: 12px !important;
+}
+#slider label {
+  font-size: 14px;
+  position: absolute;
+  width: 20px;
+  margin-top: 20px;
+  margin-left: -17px;
+  text-align: center;
+}
+#zoom {
+	width: 20px;
+	margin: 8px;
+	padding: 5px;
+	border: 1px solid gray;
+	text-align: center;
+	cursor: pointer;
+}
+#zoom-in, #zoom-out {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.clear-link {
+	font-size: 14px;
+	text-decoration: none;
+	padding-top: 5px;
+	padding-left: 10px;
+}

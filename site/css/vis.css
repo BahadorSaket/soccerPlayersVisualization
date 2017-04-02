@@ -1,0 +1,81 @@
+/*.axis path,*/
+
+/*.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}*/
+
+
+.d3-tip td {
+  color: #fff;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.d3-tip td.header {
+  padding-right: 24px;
+  text-align: right;
+  color: #919191;
+}
+
+.d3-tip td.title {
+  border-bottom: 1px #797979 solid;
+}
+
+.numb {
+  pointer-events: none;
+}
+
+.wg1 {
+  stroke: rgb(79,79,79);
+  fill: #FFFFFF;
+  fill-opacity:0.8;
+}
+
+.lg3 {
+  stroke: rgb(49, 49, 49);
+}
+
+.hollow {
+  fill-opacity: 0.0;
+}
+
+.frameless {
+  stroke-width: 0px;
+}
+
+.team_label {
+}
+.tm { text-anchor: middle; }
+
+.greybk {
+  height:1020px;
+}
+
+#slider {
+	position: absolute;
+    top: 30;
+    left: 920;
+    width: 750px !important;
+    margin:20px;
+}
+
+#play {
+	position:absolute;
+	top: 23;
+  left: 840;
+	margin:20px;
+}
+
+#vis {
+	position:relative;
+	top:60px;
+}
+
+#licensing {
+  fill: green;
+}
+#suit {
+  fill: rgb(153,0,0);
+}

@@ -1,0 +1,244 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="js">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+  <meta name="robots" content="noarchive"/>
+    <link href="css/nv.d3.css" rel="stylesheet">
+  <title>Euro Soccer Athletes</title>
+  <link rel="stylesheet" type="text/css" href="css/norm.css"/>
+  <link rel="stylesheet" type="text/css" href="css/vis.css"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/filters.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery.ui.min.css"/>
+  <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+  <script src="lib/d3.js"></script>
+  <script src="lib/d3-tip-v0.6.7.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/tower.js"></script>
+  <script src="js/repo.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/map_zoom.js"></script>
+  <script src="js/map_time.js"></script>
+  <script src="js/map_trans.js"></script>
+  <script src="js/map_carto.js"></script>
+  <script src="js/map_connect.js"></script>
+  <script src="js/transfer.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/jquery/jquery1-9.js"></script>
+  <script src="js/jquery/jquery.ui.min.js"></script>
+  <script src="js/lineChart.js"></script>
+  <script src="js/nvd3/nv.d3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+</head>
+<body onload="init()" class="ctr"> <!-- init() method defined in core.js-->
+<div id="pack" class="w100 fn">
+<table id="grid" class="h100"><tbody>
+  <tr><td class="greybk">
+    <div id="filter" class="fl filter-panel">
+      <p class="mgl15 pdb15 t2 pdt15" style="font-size:16px;">Filters:</p>
+      <div class="mgl15 ui-widget">
+        <input type="text" class="name-search" id="player-name" placeholder="Search by player name...">
+      </div>
+      <div class="filter-toggle" id="League">
+        <div class="filter-label" id="league" onclick="toggleFilterSection('league');">Current league&nbsp;<span class="arrow"  id="league-arrow"><i class="fa fa-chevron-down"></i></span></div>
+        <div class="filter-options league-filter-options" style="display:none">
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Premier League"><label>Premier League</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="La Liga"><label>La Liga</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Serie A"><label>Serie A</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Bundesliga"><label>Bundesliga</label></div>
+        </div>
+      </div>
+      <div class="filter-toggle" id="Field position">
+        <div class="filter-label" id="field-position" onclick="toggleFilterSection('position');">Field position&nbsp;<span class="arrow"  id="position-arrow"><i class="fa fa-chevron-down"></i></span></div>
+        <div class="filter-options position-filter-options" style="display:none">
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Striker - Centre Forward"><label>Striker - Centre Forward</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Striker - Left Wing"><label>Striker - Left Wing</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Striker - Right Wing"><label>Striker - Right Wing</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Striker - Secondary Striker"><label>Striker - Secondary Striker</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Midfield - Attacking Midfield"><label>Midfield - Attacking Midfield</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Midfield - Left Wing"><label>Midfield - Left Wing</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Midfield - Central Midfield"><label>Midfield - Central Midfield</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Midfield - Right Wing"><label>Midfield - Right Wing</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Midfield - Defensive Midfield"><label>Midfield - Defensive Midfield</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Defence - Left Back"><label>Defence - Left Back</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Defence - Centre Back"><label>Defence - Centre Back</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Defence - Right Back"><label>Defence - Right Back</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Goalkeeper"><label>Goalkeeper</label></div>
+        </div>
+      </div>
+      <div class="filter-toggle" id="Nationality">
+        <div class="filter-label" id="nationality" onclick="toggleFilterSection('nationality');">Nationality&nbsp;<span class="arrow"  id="nationality-arrow"><i class="fa fa-chevron-down"></i></span></div>
+        <div class="filter-options nationality-filter-options" style="display:none">
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Algeria"><label>Algeria</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Argentina"><label>Argentina</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Armenia"><label>Armenia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Austria"><label>Austria</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Belgium"><label>Belgium</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Bosnia-Herzegovina"><label>Bosnia-Herzegovina</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Brazil"><label>Brazil</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Cameroon"><label>Cameroon</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Chile"><label>Chile</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Colombia"><label>Colombia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Congo DR"><label>Congo DR</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Costa Rica"><label>Costa Rica</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Cote d'Ivoire"><label>Cote d'Ivoire</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Croatia"><label>Croatia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Denmark"><label>Denmark</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Egypt"><label>Egypt</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="England"><label>England</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="France"><label>France</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Gabon"><label>Gabon</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Germany"><label>Germany</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Ghana"><label>Ghana</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Greece"><label>Greece</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Ireland"><label>Ireland</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Italy"><label>Italy</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Japan"><label>Japan</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Kenya"><label>Kenya</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Mexico"><label>Mexico</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Montenegro"><label>Montenegro</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Morocco"><label>Morocco</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Netherlands"><label>Netherlands</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Peru"><label>Peru</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Poland"><label>Poland</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Portugal"><label>Portugal</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Romania"><label>Romania</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Russia"><label>Russia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Senegal"><label>Senegal</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Serbia"><label>Serbia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Slovakia"><label>Slovakia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Slovenia"><label>Slovenia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="South Korea"><label>South Korea</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Spain"><label>Spain</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Switzerland"><label>Switzerland</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Tunisia"><label>Tunisia</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Turkey"><label>Turkey</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Ukraine"><label>Ukraine</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="United States"><label>United States</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Uruquay"><label>Uruquay</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Venezuela"><label>Venezuela</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="Wales"><label>Wales</label></div>
+        </div>
+      </div>
+      <div class="filter-toggle" id="Age">
+        <div class="filter-label" id="age" onclick="toggleFilterSection('age');">Age&nbsp;<span class="arrow" id="age-arrow"><i class="fa fa-chevron-down"></i></span></div>
+        <div class="filter-options age-filter-options" style="display:none">
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="18"><label>18</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="19"><label>19</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="20"><label>20</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="21"><label>21</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="22"><label>22</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="23"><label>23</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="24"><label>24</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="25"><label>25</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="26"><label>26</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="27"><label>27</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="28"><label>28</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="29"><label>29</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="30"><label>30</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="31"><label>31</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="32"><label>32</label></div>
+          <div class="filter-val-div"><input class="filter-val" type="checkbox" value="33"><label>33</label></div>
+        </div>
+      </div>
+      <div class="button-box">
+       <button href="javascript:void(0);" onclick="triggerFilters();">APPLY FILTERS</button>
+       <br>
+       <a class="clear-link" href="javascript:void(0);" onclick="clearAllFilters();">clear filters</a>
+      </div>
+    </div>
+  </td><td>
+  <div class="main-page">
+      <div class="title"><strong>Today's most valuable European soccer players: their journeys to stardom</strong></div>
+      <div class="timeline">
+        <button id="play"><i class="fa fa-play"></i></button>
+        <div id="slider"></div>
+      </div>
+      <div id="canvas" class="fr pdt15">
+        <div class="fn w100"><p id="vis_cap" class="ct w100"></p></div>
+        <div id="vis"></div>
+        <div class="right-side">
+          <div class="right-box" id="chart">
+          </div>
+          <div class="right-box details-box">Click on a player's name for details</div>
+        </div>
+      </div>
+  </td></tr>
+</tbody><table>
+</div>
+<script>
+
+//Here starts the magic of zooming (and filtering, and sliding)
+$(document).ready(function () {
+    // initialize slider
+    var playInterval;
+    var slideDuration = 3000; // in milliseconds
+    $("#slider").slider({
+        value: 2015,
+        min: 2005,
+        max: 2015,
+        step: 1,
+        change: function(event, ui) {
+          //year = ui.value;
+          triggerFilters();
+          if(playInterval == undefined) clearInterval();
+        },
+        slide: function( event, ui ) {
+            setSlide(ui.value);
+        }
+    })
+    .each(function() {
+        for (var i = 0; i <= 10; i++) {
+            // Create a new element and position it with percentages
+            var el = $('<label>' + (i + 2005) + '</label>').css('left', (i/10*100) + '%');
+            // Add the element inside #slider
+            $("#slider").append(el);
+        }
+    });
+    // if any checkboxes are checked, show those filter sections
+    $("input[class='filter-val']:checked").each(function() {
+        var filter_val = $(this).closest('.filter-toggle').attr("id");
+        filter_val = filter_val.toLowerCase();
+        $(this).closest(".filter-options").show();
+        $('#' + filter_val + "-arrow").html('<i class="fa fa-chevron-up"></i>');
+    });
+
+    // AUTO SLIDE OF TIMELINE ON PLAY BUTTON CLICK
+    $("#play").button().click(function () {
+        var currentSlide = $('#slider').slider('value');
+        if (currentSlide == 2015 && $('#play .fa').hasClass('fa-play')) {
+            clearInterval(playInterval);
+            playInterval = undefined;
+            currentSlide = 2005;
+            $('#slider').slider('value', 2005);
+        }
+        if($('#play .fa').hasClass('fa-play')) {
+          $('#play').html('<span class="ui-button-text"><i class="fa fa-pause"></i></span>');
+        }
+        if (playInterval != undefined) {
+            clearInterval(playInterval);
+            playInterval = undefined;
+            $('#play').html('<span class="ui-button-text"><i class="fa fa-play"></i></span>');
+            return;
+        }
+        playInterval = setInterval(function () {
+            currentSlide++;
+            if (currentSlide == 2016) {
+                $('#play').html('<span class="ui-button-text"><i class="fa fa-play"></i></span>');
+                clearInterval(playInterval);
+                return;
+            }
+            setSlide(currentSlide);
+        }, slideDuration);
+    });
+});
+
+function setSlide(index) {
+    $("#slider").slider("value", index);
+}
+</script>
+</body>
+</html>
